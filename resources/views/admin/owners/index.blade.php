@@ -32,7 +32,7 @@
   　　　　　　　　　　　　          <td class="px-4 py-3">{{ $owner->email }}</td>
   　　　　　　　　　　　　          <td class="px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>
   　　　　　　　　　　　　          <td class="w-10 text-center">
-  　　　　　　　　　　　　            <input name="plan" type="radio">
+    　　　　　　　　　　　　         <button onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id]) }}'" class="text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-400 rounded">編集</button>
   　　　　　　　　　　　　          </td>
   　　　　　　　　　　　　        </tr>
                             @endforeach
