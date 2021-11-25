@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use InterventionImage; 
+use InterventionImage;
+use App\Http\Requests\UploadImageRequest;
 
 class ShopController extends Controller
 {
@@ -56,7 +57,7 @@ class ShopController extends Controller
         // dd(Shop::findOrFail($id));
     }
 
-    public function update(Request $request, $id)
+    public function update(UploadImageRequest $request, $id)//元　UploadImageRequest→Request
     {
         $imageFile = $request->image;//１次保存
         // echo $imageFile;
