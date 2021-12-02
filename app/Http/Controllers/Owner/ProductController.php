@@ -165,6 +165,26 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $product = Product::findOrFail($id);
+        $quantity = Stock::where('product_id', $product->id)
+        ->sum('quantity');
+
+        $shops = Shop::where('owner_id', Auth::id())
+        ->select('id', 'name')
+        ->get();
+
+        $images = Image::where('owner_id', Auth::id())
+        ->select('id', 'title', 'filename')
+        ->orderBy('updated_at', 'desc')
+        ->get();
+
+        $categories = PrimaryCategory::with('secondary') //ModelsのPrimaryCategory.phpのメソッドのsecondary
+        ->get();
+
+        return view('owner.products.edit', 
+        compact('shops', 'images', 'categories', 
+        'product', 'quantity'));
+
     }
 
     /**
