@@ -25,6 +25,7 @@ use App\Http\Controllers\Owner\ProductController;
 |
 */
 
+//新規登録をアドミン側のみでやるためには、welcomeページのルート情報削除他にもある。
 Route::get('/', function () {
     return view('owner.welcome');
 });
@@ -49,11 +50,11 @@ Route::get('/dashboard', function () {
 
 
 
-
+//新規登録をアドミン側のみでやるためには、これも削除
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
                 ->name('register');
-
+//新規登録をアドミン側のみでやるためには、これも削除
 Route::post('/register', [RegisteredUserController::class, 'store'])
                 ->middleware('guest');
 
