@@ -55,5 +55,18 @@
                 </x-button>
             </div>
         </form>
+        @if (Route::has('owner.login'))
+        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth('owners')
+                <a href="{{ url('/owner/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+            @else
+                <a href="{{ route('owner.login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                @if (Route::has('owner.register'))
+                    <a href="{{ route('owner.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @endif
+            @endauth
+        </div>
+        @endif
     </x-auth-card>
 </x-guest-layout>

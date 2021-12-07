@@ -26,9 +26,9 @@ use App\Http\Controllers\Owner\ProductController;
 */
 
 //新規登録をアドミン側のみでやるためには、welcomeページのルート情報削除他にもある。
-Route::get('/', function () {
-    return view('owner.welcome');
-});
+// Route::get('/', function () {
+//     return view('owner.welcome');
+// });
 
 Route::prefix('shops')->
     middleware('auth:owners')->group(function(){

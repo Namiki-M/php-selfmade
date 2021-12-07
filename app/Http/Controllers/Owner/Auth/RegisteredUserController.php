@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\DB;
+use Throwable;
+use Illuminate\Support\Facades\Log;
+use App\Models\Shop;
 
 class RegisteredUserController extends Controller
 {
@@ -38,14 +42,58 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:owners'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+//登録の際に、SHOP作成する、考える
 
+    try{
+
+
+
+    
         Auth::login($user = Owner::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]));
 
+        Shop::create([
+            'owner_id' => $user->id,
+            'name' => '店名を入力してください',
+            'information' => '',
+            'filename' => '',
+            'is_selling' => true
+        ]);
+
+    }catch(Throwable $e){
+        Log::error($e);
+        throw $e;
+    }
+
+
+
+
         event(new Registered($user));
+
+        // try{
+        //     DB::transaction(function () use($request) {
+        //         $owner = Owner::create([
+        //             'name' => $request->name,
+        //             'email' => $request->email,
+        //             'password' => Hash::make($request->password),
+        //         ]);
+
+        //         Shop::create([
+        //             'owner_id' => $owner->id,
+        //             'name' => '店名を入力してください',
+        //             'information' => '',
+        //             'filename' => '',
+        //             'is_selling' => true
+        //         ]);
+        //     }, 2);
+        // }catch(Throwable $e){
+        //     Log::error($e);
+        //     throw $e;
+        // }
+
 
         Auth::login($user);
 
