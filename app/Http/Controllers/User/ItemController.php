@@ -18,7 +18,7 @@ class ItemController extends Controller
             
             $id = $request->route()->parameter('item'); 
             if(!is_null($id)){ // null判定
-                $itemId = Product::availableItems()->where('products.id', $id)->exists(); //productモデルはownerと繋がっていないため、shopモデルを挟む
+                $itemId = Product::availableItems()->where('products.id', $id)->exists();
 
                 if(!$itemId){ 
                     abort(404); // 404画面表示
@@ -31,9 +31,11 @@ class ItemController extends Controller
 
     }
 
-    public function index(){
+    public function index(Request $request){
 
-        $products = Product::availableItems()->get();
+        $products = Product::availableItems()
+        ->sortOrder($request->sort)
+        ->get();
         // $stocks = DB::table('t_stocks')
         // ->select('product_id',
         // DB::raw('sum(quantity) as quantity'))
