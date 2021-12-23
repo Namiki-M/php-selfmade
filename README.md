@@ -20,3 +20,5 @@ storage/app/public/productsフォルダ内に保存する
 （productフォルダがない場合は作成する必要がある。）
 
 .envファイルはgit上にアップされない
+
+php artisan queue:work でメールの非同期処理を実行。
