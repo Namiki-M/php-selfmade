@@ -19,6 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            // 住所はじまり
+            $table->string('postal_code');
+            $table->integer('pref_id');
+            $table->string('city');
+            $table->string('town');
+            $table->string('building')->nullable();
+            $table->string('phone_number');
+            //住所終わり
             $table->rememberToken();
             $table->timestamps();
         });

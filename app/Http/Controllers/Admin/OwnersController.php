@@ -64,6 +64,7 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
+        
         // $request->name;
         $request->validate([
             'name' => 'required|string|max:255',
@@ -133,11 +134,32 @@ class OwnersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {        
+
+        
         $owner = Owner::findOrFail($id);
+        if($request->email == $owner->email ){
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'password' => 'required|string|confirmed|min:8'
+                // 'password' => 'required'|'confirmed', Rules\Password::defaults()],
+            ]);
+        }else{
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:owners',
+                'password' => 'required|string|confirmed|min:8'
+                // 'password' => 'required'|'confirmed', Rules\Password::defaults()],
+            ]);
+
+        }
+        
         $owner->name = $request->name;
         $owner->email = $request->email;
+        // $owner->password = $request->password;
+        
         $owner->password = Hash::make($request->password);
+        
         $owner->save();
 
         return redirect()
