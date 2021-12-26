@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             // ProductSeeder::class,
             // StockSeeder::class,
-            UserSeeder::class,
+            // UserSeeder::class,
         ]);
 
         //カテゴリーやimageのデータがないとエラーが起きるので、後にかく
