@@ -11,6 +11,14 @@
 <div class="mb-4">購入者情報<div>
 <ul>
   <li>{{ $user->name }}様</li>
+  <li>連絡先(電話):{{ $user->phone_number }}</li>
+  <li>メールアドレス：{{ $user->email }}</li>
+</ul>
+
+<div class="mb-4">配送先</div>
+<ul>
+  <li>郵便番号：〒{{ $user->postal_code }}</li>
+  <li>住所：{{ $place }}{{ $user->city }}{{ $user->town }}{{ $user->building }}</li>
 </ul>
 
 <br>
@@ -30,3 +38,10 @@
     <ul>
         <li>{{ $user->name }} has been ordered.</li>
     </ul>
+
+<div class="mb-4">Delivery Address</div>
+    <ul>
+      <li>Zip Code：{{ $user->postal_code }}</li>
+      <li>Address：{{ $place }}{{ $user->city }}{{ $user->town }}{{ $user->building }}</li>
+    </ul>
+

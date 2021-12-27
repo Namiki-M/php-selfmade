@@ -18,11 +18,13 @@ class SendOrderedMail implements ShouldQueue
 
     public $product;
     public $user;
+    public $place;
 
-    public function __construct($product, $user)
+    public function __construct($product, $user, $place)
     {
         $this->product = $product;
         $this->user = $user;
+        $this->place = $place;
     }
 
     /**
@@ -33,6 +35,6 @@ class SendOrderedMail implements ShouldQueue
     public function handle()
     {
         Mail::to($this->product['email'])
-        ->send(new OrderedMail($this->product, $this->user));  
+        ->send(new OrderedMail($this->product, $this->user, $this->place));  
     }
 }
