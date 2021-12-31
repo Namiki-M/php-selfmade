@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
 use App\Jobs\SendThanksMail;
 
-class ItemController extends Controller
+class SubItemController extends Controller
 {
     //userでログインしているかの確認。つまり、消す商品一覧を非ユーザーが見れるようにするには消す必要があるかも。
     public function __construct()
@@ -84,7 +84,7 @@ class ItemController extends Controller
 
         // $products = Product::all();
 
-        return view('user.index', compact('products','categories'));
+        return view('user.subindex', compact('products','categories'));
     }
 
     public function show($id){

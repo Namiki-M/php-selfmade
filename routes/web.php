@@ -23,6 +23,17 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
+// Route::middleware('guest')->group(function(){
+//     Route::get('index', [ItemController::class, 'index'])->name('user.index');
+
+// });
+
+// Route::get('/', [ItemController::class, 'index']);
+//
+//非登録ユーザーのルート設定
+// Route::get('/', [ItemController::class, 'index'])
+// ->middleware('guest')->name('items.index');
+
 Route::middleware('auth:users')->group(function(){
     Route::get('/', [ItemController::class, 'index'])->name('items.index');
     Route::get('show/{item}',[ItemController::class, 'show'])->name('items.show');
