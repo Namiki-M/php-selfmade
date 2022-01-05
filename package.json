@@ -21,7 +21,9 @@
         "tailwindcss": "^2.0.2"
     },
     "dependencies": {
+        "laravel-echo": "^1.11.3",
         "micromodal": "^0.4.10",
+        "pusher-js": "^7.0.3",
         "swiper": "^6.7.0"
     }
 }

@@ -99,6 +99,10 @@
                         <img src="">
                         @endif
                     </div>
+                    {{-- ここにチャットするボタン追加 --}}
+                    {{-- <div class="mb-4 text-center">
+                        <button href="{{ route('user.chat.chat', ['message' => $product->shop->owner_id ]) }}" type="button" class="flex ml-auto text-white bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">チェットする</button>
+                    </div> --}}
                     <div class="mb-4 text-center">
                         <button data-micromodal-trigger="modal-1" href='javascript:;' type="button" class="flex ml-auto text-white bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">ショップの詳細を見る</button>
                     </div> 

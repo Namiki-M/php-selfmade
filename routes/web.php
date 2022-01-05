@@ -5,6 +5,9 @@ use App\Http\Controllers\ComponentTestController;
 use App\Http\Controllers\LifeCycleTestController;
 use App\Http\Controllers\User\ItemController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\ChatHomeController;
+use App\Http\Controllers\User\ChatController;
+use App\Events\ChatMessageReceived;
 
  
 
@@ -28,15 +31,36 @@ Route::get('/', function () {
 
 // });
 
-// Route::get('/', [ItemController::class, 'index']);
-//
 //非登録ユーザーのルート設定
 // Route::get('/', [ItemController::class, 'index'])
 // ->middleware('guest')->name('items.index');
 
+
+
+// Route::middleware('auth:users')->group(function(){
+//         Route::get('chat', [ChatHomeController::class, 'index'])->name('chat_user_select.index');
+//         Route::get('contact/{user}', [ChatController::class, 'index'])->name('chat.contact');
+//         Route::post('/chat/send' , [ChatController::class, 'store'])->name('chat.send');
+
+// });
+
+
+//イベントのルート設定
+// Route::get('/tasks', function () {
+//     event(new ChatMessageReceived);
+// });
+
+
+//チャット練習用
+// Route::get('post', [ChatController::class], 'index');
+// Route::get('messages', [ChatController::class],'fetchMessages');
+// Route::post('messages', [ChatController::class], 'sendMessage');
+//ここまで
+
 Route::middleware('auth:users')->group(function(){
     Route::get('/', [ItemController::class, 'index'])->name('items.index');
     Route::get('show/{item}',[ItemController::class, 'show'])->name('items.show');
+
 });
 
 Route::prefix('cart')->
