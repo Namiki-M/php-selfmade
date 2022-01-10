@@ -9,6 +9,7 @@ use App\Http\Controllers\User\Auth\PasswordResetLinkController;
 use App\Http\Controllers\User\Auth\RegisteredUserController;
 use App\Http\Controllers\User\Auth\VerifyEmailController;
 use App\Http\Controllers\User\SubItemController;
+use App\Http\Controllers\User\UserPasswordReset;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
@@ -65,3 +66,8 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
 Route::get('/subindex', [SubItemController::class, 'index'])->name('subitems.index');
+
+Route::get('/password_reset', [UserPasswordReset::class, 'index'])->name('password_reset.index');
+
+Route::get('/user_password_reset', [UserPasswordReset::class, 'confirmUser'])->name('password_reset.edit');
+
