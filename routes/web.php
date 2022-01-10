@@ -78,6 +78,7 @@ Route::prefix('cart')->
         Route::get('cancel', [CartController::class, 'cancel'])->name('cart.cancel');
         Route::get('address_confirm', [CartController::class, 'addressIndex'])->name('cart.address_confirm');
         Route::post('address_update', [CartController::class, 'addressUpdate'])->name('cart.address_update');
+        Route::get('confirm', [CartController::class, 'confirm'])->name('cart.confirm');
 });
 
 // Route::get('/dashboard', function () {

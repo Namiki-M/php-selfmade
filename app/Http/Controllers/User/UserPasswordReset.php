@@ -36,8 +36,4 @@ class UserPasswordReset extends Controller
         }
     }
 
-    public function Update(Request $request){
-
-
-    }
 }
