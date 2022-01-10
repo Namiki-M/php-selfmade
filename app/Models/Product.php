@@ -62,6 +62,11 @@ class Product extends Model
         ->withPivot(['id', 'quantity']);
     }
 
+    public function histories(){
+        return $this->belongsToMany(User::class, 'purchase_histories')
+        ->withPivot(['id', 'quantity']);
+    }
+
     public function scopeAvailableItems($query){
         $stocks = DB::table('t_stocks')
         ->select('product_id',

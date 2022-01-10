@@ -26,4 +26,10 @@ class Shop extends Model
     public function product(){
         return $this->hasMany(Product::class);
     }
+
+
+    public function histories(){
+        return $this->belongsToMany(User::class, 'purchase_histories')
+        ->withPivot(['id', 'quantity']);
+    }
 }

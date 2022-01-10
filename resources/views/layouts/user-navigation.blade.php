@@ -20,9 +20,9 @@
                     <x-nav-link :href="route('user.cart.index')" :active="request()->routeIs('user.cart.index')">
                         {{ __('カートを表示') }}
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('user.chat_user_select.index')" :active="request()->routeIs('user.chat_user_select.index')">
-                        {{ __('チャット一覧表示') }}
-                    </x-nav-link> --}}
+                    <x-nav-link :href="route('user.purchase_history.index')" :active="request()->routeIs('user.purchase_history.index')">
+                        {{ __('購入履歴') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,9 +77,9 @@
             <x-responsive-nav-link :href="route('user.cart.index')" :active="request()->routeIs('user.cart.index')">
                 {{ __('カート表示') }}
             </x-responsive-nav-link>
-            {{-- <x-responsive-nav-link :href="route('user.chat_user_select.index')" :active="request()->routeIs('user.chat_user_select.index')">
-                {{ __('チャット一覧') }}
-            </x-responsive-nav-link> --}}
+            <x-responsive-nav-link :href="route('user.purchase_history.index')" :active="request()->routeIs('user.purchase_history.index')">
+                {{ __('購入履歴') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

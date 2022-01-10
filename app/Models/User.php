@@ -50,10 +50,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function histories(){
+        return $this->belongsToMany(Shop::class, 'purchase_histories')
+        ->withPivot(['id', 'quantity']);
+    }
+
     public function products(){
         return $this->belongsToMany(Product::class, 'carts')
         ->withPivot(['id', 'quantity']);
     }
+
+
+
+ 
+
 
     // チャット練習用１対多
     // public function messages()

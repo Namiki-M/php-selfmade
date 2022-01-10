@@ -7,24 +7,33 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Stock;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB; //QueryBuilder クエリビルダー
 use App\Services\CartService;
 use App\Jobs\SendThanksMail;
 use App\Jobs\SendOrderedMail;
+use App\Models\PurchaseHistory;
 
 class CartController extends Controller
 {
 
     public function index(){
+        // $a = User::get();
+        // $q_get = DB::table('users')->select('name','id')->get();
+        // print_r($q_get);
         $user = User::findOrFail(Auth::id());
-        // dd($user['pref_id']);
+        // print_r($user);
+        
         $products = $user->products;
+        // dd($products);
         $totalPrice = 0;
 
         foreach($products as $product){
+   
             $totalPrice = $product->price * $product->pivot->quantity;
         }
-
+      
         // dd($products,$totalPrice);
 
         return view('user.cart', 
@@ -119,6 +128,8 @@ class CartController extends Controller
         $items = Cart::where('user_id', Auth::id())->get();
         $products = CartService::getItemsInCart($items);
         $user = User::findOrFail(Auth::id());
+        // $b = Auth::id();
+        // dd($b);
         $prefs = [
             1 => '北海道',
             2 => '青森県', 3 => '岩手県', 4 => '宮城県', 5 => '秋田県', 6 => '山形県', 7 => '福島県',
@@ -137,7 +148,30 @@ class CartController extends Controller
             }    
         }
 
+        // foreach($products as $product){
+        //     dd($product['name']);
+        // }
+
+        // dd($products);
+
         // dd($place);
+
+   
+        // 購入履歴及び販売履歴用のテーブル
+        // $product_id = Product::where('id', $product['id']);
+
+        foreach($products as $product){  
+            $product_id = Product::findOrFail($product['id']);
+       
+            $price = $product['price'] * $product['quantity'];
+            PurchaseHistory::create([
+                'user_id' => Auth::id(),
+                'product_id' => $product['id'],
+                'shop_id' => $product_id['shop_id'],
+                'quantity' => $product['quantity'],
+                'price' => $price,
+            ]);
+        }
 
 
         SendThanksMail::dispatch($products,$user);
@@ -146,10 +180,12 @@ class CartController extends Controller
         {
             SendOrderedMail::dispatch($product, $user, $place);
         }
-        ////
+        //
         Cart::where('user_id', Auth::id())->delete();
         return redirect()->route('user.items.index');
     }
+
+
     
     public function cancel(){
         $user = User::findOrFail(Auth::id());

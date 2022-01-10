@@ -13,4 +13,8 @@ class PrimaryCategory extends Model
     public function secondary(){
         return $this->hasMany(SecondaryCategory::class);
     }
+
+    public function purchase(){
+        return $this->hasMany(PurchaseHistory::class);
+    }
 }
