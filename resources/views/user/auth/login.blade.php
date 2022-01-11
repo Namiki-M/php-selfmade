@@ -14,13 +14,13 @@
     @endif
     <x-auth-card>
         ユーザー用
-        <div class="flex-shrink-0 flex items-center">
-            <div class="w-12">
-                <a href="{{ route('user.subitems.index') }}">
-                    <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+    
+            <div class="">
+                <a class="text-sm text-red-300" href="{{ route('user.subitems.index') }}">
+                    ログインしないで利用する
                 </a>
             </div>
-        </div>
+        
         <x-slot name="logo">
             <div class="w-28">
                 <a href="/">

@@ -75,7 +75,6 @@ class CartController extends Controller
         $user = User::findOrFail(Auth::id());
         $products = $user->products;
 
-
         $lineItems = [];
         foreach($products as $product){
             $quantity = '';
