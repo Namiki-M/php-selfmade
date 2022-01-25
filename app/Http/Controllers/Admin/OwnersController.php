@@ -178,6 +178,8 @@ class OwnersController extends Controller
     {
         Owner::findOrFail($id)->delete(); //ソフトデリート
 
+        Owner::onlyTrashed()->findOrFail($id)->forceDelete();//削除
+
         return redirect()
         ->route('admin.owners.index')
         ->with(['message' => 'オーナー情報を削除しました。', 

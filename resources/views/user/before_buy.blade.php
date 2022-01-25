@@ -35,7 +35,7 @@
                     @endforeach
 
                     <div class="my-2">
-                        小計：{{ number_format($totalPrice) }}<span class="text-sm text-gray-700">円（税込）</span>
+                      小計：{{ number_format($totalPrice) }}<span class="text-sm text-gray-700">円（税込）</span>
                     </div>
 
 

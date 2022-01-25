@@ -29,6 +29,34 @@ class ShopSeeder extends Seeder
                 'filename' => 'sample2.jpg',
                 'is_selling' => true
             ],
+            [
+                'owner_id' => 3,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 4,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 5,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 6,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
         ]);
     }
 }

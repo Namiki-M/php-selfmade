@@ -17,16 +17,79 @@ class UserSeeder extends Seeder
     {
         
         DB::table('users')->insert([
-            'name' => 'Namiki Mutsuki',
-            'email' => 'test1@test.com',
-            'password' => Hash::make('password123'),
-            'postal_code' => '101-0001',
-            'pref_id' => 2,
-            'city' => '渋谷区青山',
-            'town' => '2-5-11',
-            'building' => '渋谷ビル',
-            'phone_number' => '060-9999-1111',
-            'created_at' => '2021/01/01 11:11:11'
+            [
+                'name' => 'Namiki Mutsuki',
+                'email' => 'test1@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'User2',
+                'email' => 'test2@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'User3',
+                'email' => 'test3@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'User4',
+                'email' => 'test4@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'User5',
+                'email' => 'test5@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+            [
+                'name' => 'User6',
+                'email' => 'test6@test.com',
+                'password' => Hash::make('password123'),
+                'postal_code' => '101-0001',
+                'pref_id' => 2,
+                'city' => '渋谷区青山',
+                'town' => '2-5-11',
+                'building' => '渋谷ビル',
+                'phone_number' => '060-9999-1111',
+                'created_at' => '2021/01/01 11:11:11'
+            ],
+ 
         ]);
     }
 }

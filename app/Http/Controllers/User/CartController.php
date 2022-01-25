@@ -32,7 +32,7 @@ class CartController extends Controller
 
         foreach($products as $product){
    
-            $totalPrice = $product->price * $product->pivot->quantity;
+            $totalPrice += $product->price * $product->pivot->quantity;
         }
       
         // dd($products,$totalPrice);
@@ -107,6 +107,7 @@ class CartController extends Controller
         }
 
         // dd('test');
+       
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
         $session = \Stripe\Checkout\Session::create([
@@ -116,6 +117,8 @@ class CartController extends Controller
             'success_url' => route('user.cart.success'),
             'cancel_url' => route('user.cart.cancel'),
         ]);
+
+        // dd('a');
 
         $publicKey = env('STRIPE_PUBLIC_KEY');
 
@@ -224,7 +227,7 @@ class CartController extends Controller
 
     public function addressUpdate(Request $request){
         $user = User::findOrFail(Auth::id());
-        if($request->email == $user->email ){
+        // if($request->email == $user->email ){
             $request->validate([
                 'name' => 'required|string|max:255',
                 'postal_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
@@ -234,21 +237,21 @@ class CartController extends Controller
                 'building' => ['max:50'],
                 'phone_number' => ['required', 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{4}$/'],
             ]);
-        }else{
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'postal_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
-                'pref_id' => ['required'],
-                'city' => ['required', 'max:50',],
-                'town' => ['required', 'max:50'],
-                'building' => ['max:50'],
-                'phone_number' => ['required', 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{4}$/'],
-            ]);
-        }
+        // }else{
+            // $request->validate([
+            //     'name' => 'required|string|max:255',
+            //     'email' => 'required|string|email|max:255|unique:users',
+            //     'postal_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
+            //     'pref_id' => ['required'],
+            //     'city' => ['required', 'max:50',],
+            //     'town' => ['required', 'max:50'],
+            //     'building' => ['max:50'],
+            //     'phone_number' => ['required', 'regex:/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{4}$/'],
+            // ]);
+        // }
 
         $user->name = $request->name;
-        $user->email = $request->email;
+        // $user->email = $request->email;
         $user->postal_code = $request->postal_code;
         $user->pref_id = $request->pref_id;
         $user->city = $request->city;
@@ -287,8 +290,12 @@ class CartController extends Controller
 
         foreach($products as $product){
    
-            $totalPrice = $product->price * $product->pivot->quantity;
+            $totalPrice += $product->price * $product->pivot->quantity;
         }
+
+  
+
+
       
         $prefs = [
             1 => '北海道',
