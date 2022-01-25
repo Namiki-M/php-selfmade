@@ -20,6 +20,7 @@
                         <table class="table-auto w-full text-left whitespace-no-wrap">
                           <thead>
                             <tr>
+                              <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ID</th>
                               <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">名前</th>
                               <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">メールアドレス</th>
                               <th class="md:px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">作成日</th>
@@ -28,6 +29,7 @@
                           <tbody>
                             @foreach ($owners as $owner)
                             <tr>
+                              <td class="md:px-4 py-3">{{ $owner->id }}</td>
                               <td class="md:px-4 py-3">{{ $owner->name }}</td>
                               <td class="md:px-4 py-3">{{ $owner->email }}</td>
                               <td class="md:px-4 py-3">{{ $owner->created_at->diffForHumans() }}</td>

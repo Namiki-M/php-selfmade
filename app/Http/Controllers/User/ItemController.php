@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Stock;
+use App\Models\Shop;
 use Illuminate\Support\Facades\DB;
 use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +18,7 @@ class ItemController extends Controller
     //userでログインしているかの確認。つまり、消す商品一覧を非ユーザーが見れるようにするには消す必要があるかも。
     public function __construct()
     {
-        $this->middleware('auth:users');
+        // $this->middleware('auth:users');
         $this->middleware(function ($request, $next) {
             
             $id = $request->route()->parameter('item'); 
@@ -37,19 +38,12 @@ class ItemController extends Controller
 
     public function index(Request $request){
 
-        // dd($request);
-
-        //同期的に送信
-        // Mail::to('test@example.com')
-        // ->send(new TestMail());
-
-        //非同期に送信
-        // SendThanksMail::dispatch();
         
+        // dd($request);
+ 
 
         $categories = PrimaryCategory::with('secondary') //ModelsのPrimaryCategory.phpのメソッドのsecondary
         ->get();
-
         $products = Product::availableItems()
         ->selectCategory($request->category ?? '0')
         ->searchKeyword($request->keyword)

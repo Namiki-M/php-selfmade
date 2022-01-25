@@ -12,6 +12,10 @@ use App\Http\Controllers\Owner\ShopController;
 use App\Http\Controllers\Owner\ImageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Owner\ProductController;
+use App\Http\Controllers\Owner\OwnerPasswordReset;
+use App\Http\Controllers\Owner\SoldController;
+
+
 
 
 /*
@@ -43,9 +47,16 @@ Route::resource('images', ImageController::class)
 Route::resource('products', ProductController::class)
 ->middleware('auth:owners')->except(['show']);
 
+// ownerの販売履歴のルーティング
+// Route::get('sold', [SoldController::class, 'index'])->name('sold.index');
+
 Route::get('/dashboard', function () {
     return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
+
+Route::get('/password_reset', [OwnerPasswordReset::class, 'index'])->name('password_reset.index');
+
+Route::get('/owner_password_reset', [OwnerPasswordReset::class, 'confirmOwner'])->name('password_reset.edit');
 
 
 

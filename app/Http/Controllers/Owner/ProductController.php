@@ -13,7 +13,7 @@ use App\Models\Owner;
 use App\Models\Shop;
 use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\ProductRequestdu;
+
 
 
 class ProductController extends Controller

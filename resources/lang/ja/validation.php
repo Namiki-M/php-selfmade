@@ -134,6 +134,11 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-        'quantity' => '数量'
+        'quantity' => '数量',
+        'city' => '市区町村',
+        'town' => '町名番地',
+        'building' => '建物名',
+        'postal_code' => '郵便番号',
+        'phone_number' => '電話番号'
     ],
 ];

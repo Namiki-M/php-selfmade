@@ -17,15 +17,43 @@ class ShopSeeder extends Seeder
         DB::table('shops')->insert([
             [
                 'owner_id' => 1,
-                'name' => 'ここに店名が入ります',
-                'information' => 'ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。',
-                'filename' => 'sample1.jpg',
+                'name' => 'スーパー古着',
+                'information' => 'ヨーロッパ古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
                 'is_selling' => true
             ],
             [
                 'owner_id' => 2,
-                'name' => 'ここに店名が入ります',
-                'information' => 'ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。',
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 3,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 4,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 5,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
+                'filename' => 'sample2.jpg',
+                'is_selling' => true
+            ],
+            [
+                'owner_id' => 6,
+                'name' => 'ファッション・ララ',
+                'information' => '1950年代~1970年代の古着を取り扱っています。',
                 'filename' => 'sample2.jpg',
                 'is_selling' => true
             ],
